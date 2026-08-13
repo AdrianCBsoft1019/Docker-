@@ -37,7 +37,7 @@ services:
     container_name: uptime-kuma
     restart: always
     ports:
-      - "3001"
+      - "3001:3001"
     volumes:
       - uptime-kuma-data:/app/data
     networks:
@@ -58,16 +58,6 @@ services:
       - red-cba
     depends_on:
       - app_backend
-
-  portainer:
-    image: portainer/portainer-ce:latest
-    container_name: portainer
-    restart: always
-    ports:
-      - "9000:9000"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer-data:/data
 
 networks:
   red-cba:
