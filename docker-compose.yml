@@ -9,7 +9,7 @@ services:
       - mysql-data:/var/lib/mysql
     networks:
       - red-cba
-  healthcheck:
+    healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
       timeout: 5s
