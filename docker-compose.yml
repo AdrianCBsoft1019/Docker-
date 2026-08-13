@@ -14,13 +14,12 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
   app_backend:
     image: turus/app-689:latest
     container_name: app-backend-ejemplo
     ports:
       - "5050:5050"
-    volumes:
-      - .:/home/turus
     environment:
       FLASK_ENV: development
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -30,6 +29,7 @@ services:
     depends_on:
       servidor-bd:
         condition: service_healthy
+
   nginx:
     image: nginx:alpine
     container_name: nginx-proxy
@@ -59,3 +59,5 @@ networks:
 volumes:
   mysql-data:
     name: mysql-data
+  portainer-data:
+    name: portainer-data
