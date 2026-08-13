@@ -40,7 +40,7 @@ services:
       - "3001"
     volumes:
       - uptime-kuma-data;/app/data
-    network:
+    networks:
       - red-cba
 
   nginx-proxy-manager:
