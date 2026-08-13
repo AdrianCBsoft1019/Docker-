@@ -76,5 +76,5 @@ networks:
 volumes:
   mysql-data:
     name: mysql-data
-  portainer-data:
-    name: portainer-data
+  uptime-kuma-data:
+    name: uptime-kuma-data
