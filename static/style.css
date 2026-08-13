@@ -1,0 +1,186 @@
+body {
+    background-color: #24303A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    padding: 20px;
+    border-radius: 8px;
+    border: 5px solid #ff4f79;
+    width: 550px;
+    background-color: #ddfaf3;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.container h1 {
+    color: #ef970a;
+    margin-top: 0;
+}
+
+.container h2 {
+    color: #1fbfb8;
+}
+
+.container ul {
+    padding-left: 20px;
+}
+
+.container li {
+    list-style: georgian;
+    padding: 5px;
+    font-size: 18px;
+    color: #ff4f79;
+    text-align: start;
+}
+
+.puerto-tag {
+    color: #bf821f;
+    border-radius: 5px;
+    border: 3px solid #bf8a1f;
+    background-color: #fae5bf;
+    padding: 2px 8px;
+}
+
+.validacion {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.mensaje-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 3px solid;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.mensaje-container.success {
+    background-color: #d1e7dd;
+    border-color: #198754;
+    color: #0f5132;
+}
+
+.mensaje-container.error {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+    color: #842029;
+}
+
+.mensaje-icono {
+    font-size: 1.4rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mensaje-estado {
+    display: flex;
+    flex-direction: column;
+}
+
+.mensaje-estado .mensaje {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    background-color: transparent;
+    color: inherit; 
+    padding: 0;
+}
+
+.mensaje-estado .estado {
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+.form-registro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #1fbfb8;
+}
+
+.form-registro input {
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-registro input:focus {
+    border-color: #ff4f79;
+}
+
+.btn-guardar {
+    background-color: #ff4f79;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-guardar:hover {
+    background-color: #e03e65;
+}
+
+.tabla-container {
+    overflow-x: auto;
+    margin-top: 15px;
+}
+
+.tabla-aprendices {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.tabla-aprendices th, .tabla-aprendices td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    font-size: 14px;
+}
+
+.tabla-aprendices th {
+    background-color: #1fbfb8;
+    color: white;
+}
+
+.tabla-aprendices tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.sin-datos {
+    text-align: center !important;
+    color: #777;
+    font-style: italic;
+}

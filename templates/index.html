@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+<title>Probando Docker</title>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Centro de Biotecnologia Agropecuaria</h1>
+
+        <h2>Estoy usando el puerto <span class="puerto-tag">{{ puerto }}</span></h2>
+
+        <ul>
+            <li>Roderick Buitrago</li>
+            <li>Valerie Sofía Ballen Orjuela</li>
+            <li>Nareth Tatiana Ramirez Fuentes</li>
+            <li>Nicolas Santiago Duarte tabares</li>
+        </ul>
+
+        <div class="validacion">
+            <div class="mensaje-container {{ 'success' if 'exitosa' in db_status else 'error' }}">
+                <div class="mensaje-icono">
+                    {% if 'exitosa' in db_status %}
+                        ✓
+                    {% else %}
+                        ✕
+                    {% endif %}
+                </div>
+
+                <div class="mensaje-estado">
+                    <span class="mensaje">Estado de la Base de Datos:</span>
+                    <span class="estado">{{ db_status }}</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Registrar Aprendiz</h2>
+        <form action="/registrar" method="POST" class="form-registro">
+            <input type="text" name="nombre_completo" placeholder="Nombre Completo" required>
+            <input type="text" name="numero_documento" placeholder="Número de Documento" required>
+            <input type="text" name="ficha" placeholder="Número de Ficha" required>
+            <button type="submit" class="btn-guardar">Guardar Aprendiz</button>
+        </form>
+
+        <h2>Aprendices en la BD</h2>
+        <div class="tabla-container">
+            <table class="tabla-aprendices">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Documento</th>
+                        <th>Ficha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for aprendiz in aprendices %}
+                    <tr>
+                        <td>{{ aprendiz.id }}</td>
+                        <td>{{ aprendiz.nombre_completo }}</td>
+                        <td>{{ aprendiz.numero_documento }}</td>
+                        <td>{{ aprendiz.ficha }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4" class="sin-datos">No hay registros guardados aún.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

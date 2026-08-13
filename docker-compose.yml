@@ -1,0 +1,35 @@
+services:
+  servidor-bd:
+    image: mysql:8.0
+    container_name: servidor-bd-ejemplo
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - red-cba
+
+  app_backend:
+    build: .
+    container_name: app-backend-ejemplo
+    ports:
+      - "5050:5050"
+    volumes:
+      - .:/home/turus
+    environment:
+      FLASK_ENV: development
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    networks:
+      - red-cba
+    depends_on:
+      - servidor-bd
+
+networks:
+  red-cba:
+    name: red-cba
+
+volumes:
+  mysql-data:
+    name: mysql-data
