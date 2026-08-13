@@ -1,12 +1,15 @@
 services:
-  servidor-bd:
-    image: mysql:8.0
-    container_name: servidor-bd-ejemplo
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: proxy-manager
+    restart: always
+    ports:
+      - "80:80" 
+      - "81:81" 
+      - "443:443" 
     volumes:
-      - mysql-data:/var/lib/mysql
+      - ./npm_data:/data
+      - ./npm_letsencrypt:/etc/letsencrypt
     networks:
       - red-cba
     healthcheck:
