@@ -42,7 +42,7 @@ def home():
 
     try:
         conn = get_db_connection()
-        db_status = "¡Conexión exitosa a la BD!"
+        db_status = "¡es la cosa!"
         
         with conn.cursor(pymysql.cursors.DictCursor) as cursor:
             cursor.execute("SELECT * FROM aprendices ORDER BY creado_en DESC")
