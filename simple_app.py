@@ -42,7 +42,7 @@ def home():
 
     try:
         conn = get_db_connection()
-        db_status = "¡es la cosa!"
+        db_status = "¡es la cosa !"
         
         with conn.cursor(pymysql.cursors.DictCursor) as cursor:
             cursor.execute("SELECT * FROM aprendices ORDER BY creado_en DESC")
@@ -75,6 +75,10 @@ def registrar():
             print(f"Error al registrar: {e}")
 
     return redirect(url_for("home"))
+
+@app.route("/version", methods=["GET"])
+def version():
+    return "<h2>hola ya puedes ingresar, verificacion completa, todo bien pa la buena</h2>", 201
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5050, debug=True)
