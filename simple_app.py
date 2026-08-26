@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, os
 import pymysql
 
 app = Flask(__name__)
@@ -6,7 +6,7 @@ app = Flask(__name__)
 DB_CONFIG = {
     'host': 'servidor-bd',          
     'user': 'root',
-    'password': 'sena123',
+    'password': os.getenv('DB_PASSWORD'),
     'database': 'adso_db',              
     'connect_timeout': 3  
 }
