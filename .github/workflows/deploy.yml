@@ -57,10 +57,11 @@ jobs:
         with:
           image-ref: turus/app-689:latest
           format: 'table'
-          exit-code: 1
+          exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
-          security: 'CRITICAL,HIGH'
+          scanners: 'vuln,secret'
+          severity: 'CRITICAL,HIGH'
       
       - name: Publicar imagen en DockerHub
         run: docker push turus/app-689:latest
