@@ -48,6 +48,8 @@ jobs:
         with:
           context: .
           push: false
+          load: true
+          no-cache: true
           tags: turus/app-689:latest
       
       - name: escanear contenedor con Trivy
