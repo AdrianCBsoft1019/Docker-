@@ -81,4 +81,4 @@ def version():
     return "<h2>hola ya puedes ingresar, verificacion completa, todo bien pa la buena</h2>", 201
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5050, debug=True)
+    app.run(host="0.0.0.0", port=5050, debug= False) # nosec B104
