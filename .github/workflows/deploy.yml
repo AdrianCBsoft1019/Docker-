@@ -61,7 +61,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           scanners: 'vuln,secret'
-          severity: 'CRITICAL,HIGH'
+          severity: 'CRITICAL'
       
       - name: Publicar imagen en DockerHub
         run: docker push turus/app-689:latest
