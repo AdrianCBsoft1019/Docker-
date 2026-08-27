@@ -43,7 +43,7 @@ services:
     networks:
       - red-cba
     
-  dozzle::
+  dozzle:
     image: amir20/dozzle:latest
     container_name: dozzle
     restart: always
