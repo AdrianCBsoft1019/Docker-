@@ -4,13 +4,11 @@ import pymysql
 
 app = Flask(__name__)
 
-MYSQL_PASSWORD = "super_secret_123"
-
 DB_CONFIG = {
-    'host': 'servidor-bd',          
-    'user': 'root',
-    'password': os.getenv('DB_PASSWORD'),
-    'database': 'adso_db',              
+    'host': os.getenv('DB_HOST', 'servidor-bd'),          
+    'user': os.getenv('DB_USER', 'root'),
+    'password': os.getenv('DB_PASSWORD', ''),
+    'database': os.getenv('DB_NAME', 'adso_db'),              
     'connect_timeout': 3  
 }
 
@@ -38,8 +36,25 @@ def init_db():
 
 @app.route("/")
 def home():
+    init_db() 
+    
+    db_status = ""
+    aprendices = []
 
-    return "Error interno del servidor", 500
+    try:
+        conn = get_db_connection()
+        db_status = "¡Conexión exitosa a la base de datos!"
+        
+        with conn.cursor(pymysql.cursors.DictCursor) as cursor:
+            cursor.execute("SELECT * FROM aprendices ORDER BY creado_en DESC")
+            aprendices = cursor.fetchall()
+            
+        conn.close()
+    except Exception as e:
+        db_status = f"Error en la conexión: {e}"
+
+
+    return render_template("index.html", db_status=db_status, aprendices=aprendices, puerto="5050"), 200
 
 @app.route("/registrar", methods=["POST"])
 def registrar():
@@ -68,5 +83,5 @@ def version():
     return "<h2>hola ya puedes ingresar, verificacion completa, todo bien pa la buena</h2>", 200
 
 if __name__ == '__main__':
- 
-    app.run(host="0.0.0.0", port=5050, debug=True)
+
+    app.run(host="0.0.0.0", port=5050, debug=False)
