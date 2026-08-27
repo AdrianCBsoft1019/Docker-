@@ -5,11 +5,11 @@ app = Flask(__name__)
 
 
 DB_CONFIG = {
-    'host': 'servidor-bd',          
+    'host': os.getenv('DB_HOST', 'servidor-bd'), 
     'user': 'root',
-    'password': os.getenv('DB_PASSWORD'),
-    'database': 'adso_db',              
-    'connect_timeout': 3  
+    'password': os.getenv('MYSQL_ROOT_PASSWORD', ''),  
+    'database': os.getenv('MYSQL_DATABASE', 'adso_db'), 
+    'connect_timeout': 3
 }
 
 def get_db_connection():
