@@ -1,14 +1,15 @@
-from flask import Flask, request, render_template, redirect, url_for
-import os
+from flask import Flask, request, render_template, redirect, url_for, os
 import pymysql
 
 app = Flask(__name__)
 
+MYSQL_PASSWORD = "super_secret_123"
+
 DB_CONFIG = {
-    'host': os.getenv('DB_HOST', 'servidor-bd'),          
-    'user': os.getenv('DB_USER', 'root'),
-    'password': os.getenv('DB_PASSWORD', ''),
-    'database': os.getenv('DB_NAME', 'adso_db'),              
+    'host': 'servidor-bd',          
+    'user': 'root',
+    'password': os.getenv('DB_PASSWORD'),
+    'database': 'adso_db',              
     'connect_timeout': 3  
 }
 
@@ -43,7 +44,7 @@ def home():
 
     try:
         conn = get_db_connection()
-        db_status = "¡Conexión exitosa a la base de datos!"
+        db_status = "¡es la cosa !"
         
         with conn.cursor(pymysql.cursors.DictCursor) as cursor:
             cursor.execute("SELECT * FROM aprendices ORDER BY creado_en DESC")
@@ -53,8 +54,7 @@ def home():
     except Exception as e:
         db_status = f"Error en la conexión: {e}"
 
-
-    return render_template("index.html", db_status=db_status, aprendices=aprendices, puerto="5050"), 200
+    return render_template("index.html", db_status=db_status, aprendices=aprendices, puerto="5050")
 
 @app.route("/registrar", methods=["POST"])
 def registrar():
@@ -80,8 +80,7 @@ def registrar():
 
 @app.route("/version", methods=["GET"])
 def version():
-    return "<h2>hola ya puedes ingresar, verificacion completa, todo bien pa la buena</h2>", 200
+    return "<h2>hola ya puedes ingresar, verificacion completa, todo bien pa la buena</h2>", 201
 
 if __name__ == '__main__':
-
-    app.run(host="0.0.0.0", port=5050, debug=False)
+    app.run(host="0.0.0.0", port=5050, debug= False) # nosec B104
