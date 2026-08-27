@@ -3,7 +3,6 @@ import pymysql
 
 app = Flask(__name__)
 
-MYSQL_PASSWORD = "super_secret_123"
 
 DB_CONFIG = {
     'host': 'servidor-bd',          
